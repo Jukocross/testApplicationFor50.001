@@ -59,6 +59,10 @@ public class Quiz implements QuizFunction,Parcelable {
         return totalScore;
     }
 
+    public ArrayList<Question> getListOfQuestion() {
+        return listOfQuestion;
+    }
+
     public int getCurrentScore() {
         return currentScore;
     }
