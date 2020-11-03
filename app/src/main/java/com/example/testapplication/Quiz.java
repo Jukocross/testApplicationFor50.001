@@ -80,8 +80,12 @@ public class Quiz implements QuizFunction,Parcelable {
     }
 
     @Override
-    public void addQuestion(Question q){
-        listOfQuestion.add(q);
+    public boolean addQuestion(Question q){
+        if (!listOfQuestion.contains(q)){
+            listOfQuestion.add(q);
+            return true;
+        }
+        return false;
     }
     public void removeQuestion(Question q){
         listOfQuestion.remove(q);

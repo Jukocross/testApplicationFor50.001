@@ -37,7 +37,8 @@ public class RecyclerViewAdapterQuiz extends RecyclerView.Adapter<RecyclerViewAd
         holder.cardView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(mContext, Quiz_Activity.class);
+                //Intent intent = new Intent(mContext, Quiz_Activity.class);
+                Intent intent = new Intent(mContext, quizStartActivity.class);
                 intent.putExtra("quizObject", mData.get(position));
                 mContext.startActivity(intent);
             }

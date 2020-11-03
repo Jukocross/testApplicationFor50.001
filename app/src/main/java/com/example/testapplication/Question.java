@@ -41,8 +41,9 @@ public class Question implements Parcelable {
     }
 
     public void updateQuiz(QuizFunction quiz){
-        quiz.addQuestion(this);
-        quiz.updateMaxScore(questionScore);
+        if(quiz.addQuestion(this)){
+            quiz.updateMaxScore(questionScore);
+        }
     }
 
     public String getQuestionTitle() {

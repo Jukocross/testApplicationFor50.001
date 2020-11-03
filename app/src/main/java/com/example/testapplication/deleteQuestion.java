@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class deleteQuestion extends AppCompatActivity {
 
+    //TODO FINISH UP THE UI FOR DELETE QUESTION FOR INSTRCUTOR
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
