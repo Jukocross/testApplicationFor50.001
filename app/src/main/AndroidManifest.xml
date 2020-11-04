@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".quizStartActivity"></activity>
+        <activity android:name=".endOfQuizSummaryActivity"></activity>
+        <activity android:name=".answerQuestionActivity" />
+        <activity android:name=".quizStartActivity" />
         <activity android:name=".deleteQuestion" />
         <activity android:name=".addQuestion" />
         <activity android:name=".addQuiz" />

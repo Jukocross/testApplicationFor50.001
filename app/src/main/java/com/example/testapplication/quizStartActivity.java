@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,16 +47,27 @@ public class quizStartActivity extends AppCompatActivity {
         quiz = intent.getExtras().getParcelable("quizObject");
 
         String title = quiz.getTitle();
-        questionListRef = quizRef.child(title);
+        questionListRef = quizRef.child(title).child("Question");
 
-        questionListRef.addListenerForSingleValueEvent(checkForChild);
+        questionListRef.addValueEventListener(checkForChild);
+
+        startButton.setOnClickListener(startQuestions);
 
     }
+
+    View.OnClickListener startQuestions = new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(quizStartActivity.this, answerQuestionActivity.class);
+            intent.putExtra("quizObject", quiz);
+            startActivity(intent);
+        }
+    };
 
     ValueEventListener checkForChild = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
-            if (snapshot.hasChild("Question")){
+            if (snapshot.exists()){
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     Question temp = ds.getValue(Question.class);
                     if (!lstQuestion.contains(temp)){

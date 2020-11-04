@@ -9,15 +9,20 @@ public class Question implements Parcelable {
     private String mcqChoice1 = "";
     private String mcqChoice2 = "";
     private String mcqChoice3 = "";
+    private String mcqChoice4 = "";
     private int questionScore;
-    private boolean isSelected;
+    private boolean isSelected, completed = false;
 
     public Question(){}
 
-    public Question(String title, int score, String ans, QuizFunction quiz) {
+    public Question(String title, int score, String ans,String choice1, String choice2, String choice3, String choice4, QuizFunction quiz) {
         questionTitle = title;
         questionScore = score;
         answer = ans;
+        mcqChoice1 = choice1;
+        mcqChoice2 = choice2;
+        mcqChoice3 = choice3;
+        mcqChoice4 = choice4;
         quiz.addQuestion(this);
         quiz.updateMaxScore(score);
     }
@@ -38,12 +43,32 @@ public class Question implements Parcelable {
         mcqChoice1 = in.readString();
         mcqChoice2 = in.readString();
         mcqChoice3 = in.readString();
+        mcqChoice4 = in.readString();
+        isSelected = in.readInt() == 1;
+        completed = in.readInt() == 1;
     }
 
     public void updateQuiz(QuizFunction quiz){
         if(quiz.addQuestion(this)){
             quiz.updateMaxScore(questionScore);
         }
+    }
+
+    public boolean checkAnswer(String s){
+        if (answer.equals(s)){
+         return true;
+        }
+        return false;
+    }
+
+    public void answerQuestion(String s, QuizFunction quiz){
+        if (checkAnswer(s)){
+            quiz.updateCurrentScore(questionScore);
+        }
+    }
+
+    public boolean isCompleted() {
+        return completed;
     }
 
     public String getQuestionTitle() {
@@ -64,6 +89,10 @@ public class Question implements Parcelable {
 
     public void setMcqChoice3(String mcqChoice3) {
         this.mcqChoice3 = mcqChoice3;
+    }
+
+    public String getMcqChoice4() {
+        return mcqChoice4;
     }
 
     public String getAnswer() {
@@ -100,6 +129,26 @@ public class Question implements Parcelable {
         this.answer = answer;
     }
 
+    public void setQuestionTitle(String questionTitle) {
+        this.questionTitle = questionTitle;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public void setMcqChoice4(String mcqChoice4) {
+        this.mcqChoice4 = mcqChoice4;
+    }
+
+    public void setQuestionScore(int questionScore) {
+        this.questionScore = questionScore;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -113,5 +162,8 @@ public class Question implements Parcelable {
         dest.writeString(mcqChoice1);
         dest.writeString(mcqChoice2);
         dest.writeString(mcqChoice3);
+        dest.writeString(mcqChoice4);
+        dest.writeInt(isSelected ? 1 : 0);//write 1 if it is true
+        dest.writeInt(completed ? 1 : 0);
     }
 }

@@ -46,6 +46,46 @@
             android:layout_height="wrap_content"
             android:inputType="number"/>
     </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/createQuestion_Choice1"
+        android:layout_width='match_parent'
+        android:layout_height='wrap_content'
+        android:hint="Choice1">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/createQuestion_Choice2"
+        android:layout_width='match_parent'
+        android:layout_height='wrap_content'
+        android:hint="Choice2">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/createQuestion_Choice3"
+        android:layout_width='match_parent'
+        android:layout_height='wrap_content'
+        android:hint="Choice3">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/createQuestion_Choice4"
+        android:layout_width='match_parent'
+        android:layout_height='wrap_content'
+        android:hint="Choice4">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/createQuestion_Button"
         android:layout_width="match_parent"

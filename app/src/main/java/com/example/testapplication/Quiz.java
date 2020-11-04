@@ -81,11 +81,15 @@ public class Quiz implements QuizFunction,Parcelable {
 
     @Override
     public boolean addQuestion(Question q){
-        if (!listOfQuestion.contains(q)){
-            listOfQuestion.add(q);
-            return true;
+        for (int i = 0; i < listOfQuestion.size(); ++i){
+            if (listOfQuestion.get(i).getQuestionTitle() == q.getQuestionTitle()){
+                listOfQuestion.remove(i);
+                listOfQuestion.add(q);
+                return true;
+            }
         }
-        return false;
+        listOfQuestion.add(q);
+        return true;
     }
     public void removeQuestion(Question q){
         listOfQuestion.remove(q);
@@ -93,6 +97,7 @@ public class Quiz implements QuizFunction,Parcelable {
     public void updateMaxScore(int score){
         this.totalScore = this.totalScore + score;
     }
+    public void updateCurrentScore(int score) {this.currentScore = this.currentScore + score; }
     //Parcel
     public void writeToParcel(Parcel dest, int flags){
         dest.writeString(Title);
