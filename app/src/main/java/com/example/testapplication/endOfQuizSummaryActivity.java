@@ -35,6 +35,10 @@ public class endOfQuizSummaryActivity extends AppCompatActivity {
         questionListRef = quizRef.child(title).child("Question");
         lstQuestion = quiz.getListOfQuestion();
         String score = quiz.getScoreToString();
+
+        showScore = (TextView) findViewById(R.id.quiz_summary_score);
+        endOfQuizButton = (Button) findViewById(R.id.quiz_summary_button);
+
         //Set score to text view
 
 
